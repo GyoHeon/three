@@ -1,7 +1,7 @@
 import * as THREE from "three";
 
 import { OrbitControls } from "three/examples/jsm/Addons.js";
-import Card from "./Card";
+import { TossCard } from "./Card";
 
 window.addEventListener("load", () => {
   init();
@@ -14,6 +14,7 @@ function init() {
   });
 
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor("#ffffff", 1);
 
   document.body.appendChild(renderer.domElement);
 
@@ -25,7 +26,7 @@ function init() {
     1,
     500
   );
-  camera.position.set(0, 0, 25);
+  camera.position.set(0, 0, 250);
 
   renderer.render(scene, camera);
 
@@ -38,11 +39,13 @@ function init() {
   controls.minPolarAngle = Math.PI * 0.25;
   controls.maxPolarAngle = Math.PI * 0.75;
 
-  const card = new Card({
-    width: 10,
-    height: 15.8,
-    radius: 0.5,
-    color: "#0077ff",
+  const card = new TossCard({
+    width: 100,
+    height: 158,
+    radius: 5,
+    metalness: 0.3,
+    roughness: 0.5,
+    color: "#f3ff00",
   });
   card.mesh.rotation.z = Math.PI * 0.05;
 
