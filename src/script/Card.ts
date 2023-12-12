@@ -85,7 +85,7 @@ class TossCard {
     );
     const frontMaterial = new THREE.MeshStandardMaterial({
       color,
-      side: THREE.FrontSide,
+      side: THREE.DoubleSide,
       roughness,
       metalness,
     });
@@ -112,7 +112,7 @@ class TossCard {
     const backGeometry = new THREE.ShapeGeometry(backShape);
     const backMaterial = new THREE.MeshStandardMaterial({
       color: "#1e90ff",
-      side: THREE.BackSide,
+      side: THREE.DoubleSide,
       roughness,
       metalness,
     });
@@ -172,7 +172,7 @@ class TossCard {
       .translate(45, -74, 1.5);
     const midMaterial = new THREE.MeshStandardMaterial({
       color: "#ffffff",
-      side: THREE.FrontSide,
+      side: THREE.DoubleSide,
       roughness,
       metalness,
     });
@@ -184,19 +184,64 @@ class TossCard {
     const midT = new THREE.PlaneGeometry(90, 5)
       .rotateX(-Math.PI * 0.5)
       .translate(0, 79, 1.5);
-    const midB = new THREE.PlaneGeometry(90, 5)
+    const midBL = new THREE.PlaneGeometry(13, 5)
       .rotateX(Math.PI * 0.5)
-      .translate(0, -79, 1.5);
+      .translate(-39, -79, 1.5);
+    const midBR = new THREE.PlaneGeometry(52, 5)
+      .rotateX(Math.PI * 0.5)
+      .translate(19, -79, 1.5);
     const midL = new THREE.PlaneGeometry(5, 148)
       .rotateY(-Math.PI * 0.5)
       .translate(-50, 0, 1.5);
     const midR = new THREE.PlaneGeometry(5, 148)
       .rotateY(Math.PI * 0.5)
       .translate(50, 0, 1.5);
+    const midBAL = new THREE.CylinderGeometry(
+      5,
+      5,
+      5,
+      20,
+      20,
+      true,
+      -Math.PI * 0.5,
+      Math.PI * 0.1
+    )
+      .rotateZ(Math.PI * 0.5)
+      .rotateY(Math.PI * 0.5)
+      .translate(-33, -74, 1.5);
+    const midBAT = new THREE.CylinderGeometry(
+      5,
+      5,
+      5,
+      20,
+      20,
+      true,
+      -Math.PI * 0.2,
+      Math.PI * 0.4
+    )
+      .rotateX(-Math.PI * 0.5)
+      .translate(-20, -79, 1.5);
+    const midBAR = new THREE.CylinderGeometry(
+      5,
+      5,
+      5,
+      20,
+      20,
+      true,
+      -Math.PI * 0.6,
+      Math.PI * 0.1
+    )
+      .rotateZ(Math.PI * 0.5)
+      .rotateY(Math.PI * 0.5)
+      .translate(-7, -74, 1.5);
     const midTMesh = new THREE.Mesh(midT, midMaterial);
-    const midBMesh = new THREE.Mesh(midB, midMaterial);
+    const midBLMesh = new THREE.Mesh(midBL, midMaterial);
+    const midBRMesh = new THREE.Mesh(midBR, midMaterial);
     const midLMesh = new THREE.Mesh(midL, midMaterial);
     const midRMesh = new THREE.Mesh(midR, midMaterial);
+    const midBALMesh = new THREE.Mesh(midBAL, midMaterial);
+    const midBATMesh = new THREE.Mesh(midBAT, midMaterial);
+    const midBARMesh = new THREE.Mesh(midBAR, midMaterial);
 
     const midGroup = new THREE.Group().add(
       midRTMesh,
@@ -204,9 +249,13 @@ class TossCard {
       midLBMesh,
       midRBMesh,
       midTMesh,
-      midBMesh,
+      midBLMesh,
+      midBRMesh,
       midLMesh,
-      midRMesh
+      midRMesh,
+      midBALMesh,
+      midBATMesh,
+      midBARMesh
     );
 
     const mesh = new THREE.Group().add(frontMesh, backMesh, midGroup);

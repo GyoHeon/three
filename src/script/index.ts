@@ -26,7 +26,8 @@ function init() {
     1,
     500
   );
-  camera.position.set(0, 0, 250);
+  // camera.position.set(0, 0, 250);
+  camera.position.set(0, -150, 150);
 
   renderer.render(scene, camera);
 
@@ -65,7 +66,7 @@ function init() {
   renderAnimation();
 
   function renderAnimation() {
-    controls.update();
+    // controls.update();
 
     renderer.render(scene, camera);
 
