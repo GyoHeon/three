@@ -85,7 +85,7 @@ class TossCard {
     );
     const frontMaterial = new THREE.MeshStandardMaterial({
       color,
-      side: THREE.DoubleSide,
+      side: THREE.FrontSide,
       roughness,
       metalness,
     });
@@ -112,7 +112,7 @@ class TossCard {
     const backGeometry = new THREE.ShapeGeometry(backShape);
     const backMaterial = new THREE.MeshStandardMaterial({
       color: "#1e90ff",
-      side: THREE.DoubleSide,
+      side: THREE.BackSide,
       roughness,
       metalness,
     });
@@ -187,14 +187,14 @@ class TossCard {
     const midBL = new THREE.PlaneGeometry(13, 5)
       .rotateX(Math.PI * 0.5)
       .translate(-39, -79, 1.5);
-    const midBALP = new THREE.PlaneGeometry(10, 5)
+    const midBALP = new THREE.PlaneGeometry(11, 5)
       .rotateX(Math.PI * 0.5)
-      .rotateZ(Math.PI * 0.145)
-      .translate(-27, -76.8, 1.5);
-    const midBARP = new THREE.PlaneGeometry(10, 5)
+      .rotateZ(0.45)
+      .translate(-26.1, -76.4, 1.5);
+    const midBARP = new THREE.PlaneGeometry(11, 5)
       .rotateX(Math.PI * 0.5)
-      .rotateZ(-Math.PI * 0.145)
-      .translate(-13, -76.8, 1.5);
+      .rotateZ(-0.45)
+      .translate(-13.9, -76.4, 1.5);
     const midBR = new THREE.PlaneGeometry(52, 5)
       .rotateX(Math.PI * 0.5)
       .translate(19, -79, 1.5);
@@ -206,8 +206,8 @@ class TossCard {
       .translate(50, 0, 1.5);
 
     const midBAL = new THREE.CylinderGeometry(
-      5,
-      5,
+      7.5,
+      7.5,
       5,
       20,
       20,
@@ -217,7 +217,7 @@ class TossCard {
     )
       .rotateZ(Math.PI * 0.5)
       .rotateY(Math.PI * 0.5)
-      .translate(-33, -74, 1.5);
+      .translate(-33, -71.5, 1.5);
     const midBAT = new THREE.CylinderGeometry(
       5,
       5,
@@ -231,8 +231,8 @@ class TossCard {
       .rotateX(-Math.PI * 0.5)
       .translate(-20, -79, 1.5);
     const midBAR = new THREE.CylinderGeometry(
-      5,
-      5,
+      7.5,
+      7.5,
       5,
       20,
       20,
@@ -242,7 +242,7 @@ class TossCard {
     )
       .rotateZ(Math.PI * 0.5)
       .rotateY(Math.PI * 0.5)
-      .translate(-7, -74, 1.5);
+      .translate(-7, -71.5, 1.5);
     const midTMesh = new THREE.Mesh(midT, midMaterial);
     const midBLMesh = new THREE.Mesh(midBL, midMaterial);
     const midBRMesh = new THREE.Mesh(midBR, midMaterial);

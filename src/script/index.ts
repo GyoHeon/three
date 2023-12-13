@@ -3,6 +3,8 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { TossCard } from "./Card";
 
+THREE.ColorManagement.enabled = true;
+
 window.addEventListener("load", () => {
   init();
 });
@@ -10,7 +12,6 @@ window.addEventListener("load", () => {
 function init() {
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
-    alpha: true,
   });
 
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -26,8 +27,7 @@ function init() {
     1,
     500
   );
-  // camera.position.set(0, 0, 250);
-  camera.position.set(0, -150, 150);
+  camera.position.set(0, 0, 250);
 
   renderer.render(scene, camera);
 
@@ -52,11 +52,11 @@ function init() {
 
   scene.add(card.mesh);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 3);
   ambientLight.position.set(4, 4, 4);
   scene.add(ambientLight);
 
-  const directionalLight1 = new THREE.DirectionalLight(0xffffff);
+  const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.4);
   const directionalLight2 = directionalLight1.clone();
 
   directionalLight1.position.set(1, 1, 3);
@@ -66,7 +66,7 @@ function init() {
   renderAnimation();
 
   function renderAnimation() {
-    // controls.update();
+    controls.update();
 
     renderer.render(scene, camera);
 
