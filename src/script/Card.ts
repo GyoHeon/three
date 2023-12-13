@@ -58,7 +58,6 @@ class TossCard {
   }: CardOptions) {
     const x = width * 0.5 - radius;
     const y = height * 0.5 - radius;
-    const depth = 1.5;
 
     const frontShape = new THREE.Shape();
 
